@@ -24,5 +24,16 @@ namespace MegaDesk
         {
             _mainMenu.Show();
         }
+
+        private void btnGetQuote_Click(object sender, EventArgs e)
+        {
+            //TODO: generate quote
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
+
