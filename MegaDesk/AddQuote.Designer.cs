@@ -1,6 +1,6 @@
 ﻿namespace MegaDesk
 {
-    partial class Form1
+    partial class AddQuote
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // AddQuote
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "AddQuote";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Add New Quote";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddQuote_FormClosed);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-
