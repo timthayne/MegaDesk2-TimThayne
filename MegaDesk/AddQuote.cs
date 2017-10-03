@@ -28,11 +28,12 @@ namespace MegaDesk
 
         private void btnGetQuote_Click(object sender, EventArgs e)
         {
-            var desk = new Desk();
-
-            desk.Depth = numDeskDepth.Value;
-            desk.Width = numDeskWidth.Value;
-            desk.NumberOfDrawers = (int)numNumberOfDrawers.Value;
+            var desk = new Desk
+            {
+                Depth = numDeskDepth.Value,
+                Width = numDeskWidth.Value,
+                NumberOfDrawers = (int)numNumberOfDrawers.Value
+            };
 
             switch (comSurfaceMaterial.Text.ToLower())
             {
@@ -57,13 +58,14 @@ namespace MegaDesk
                     break;
             }
 
-            var deskQuote = new DeskQuote();
+            var deskQuote = new DeskQuote
+            {
+                Desk = desk,
+                CustomerName = txtCustomerName.Text,
+                QuoteDate = DateTime.Now
+            };
 
-            deskQuote.Desk = desk;
-            deskQuote.CustomerName = txtCustomerName.Text;
-            deskQuote.QuoteDate = DateTime.Now;
-            
-            switch(comDelivery.Text.ToLower())
+            switch (comDelivery.Text.ToLower())
             {
                 case "rush - 3 days":
                     deskQuote.DeliveryType = DeskQuote.Delivery.Rush3Days;
@@ -84,9 +86,10 @@ namespace MegaDesk
 
             try
             {
+                // get quote amount
                 var quote = deskQuote.GetQuote();
 
-                // get quote amount
+                // add amount to quote
                 deskQuote.QuoteAmount = quote;
 
                 // add quote to file
@@ -111,10 +114,11 @@ namespace MegaDesk
 
         private void AddQuoteToFile(DeskQuote deskQuote)
         {
-            string ordersFile = @"quotes.txt";
-            if (!File.Exists(ordersFile))
+            string quotesFile = @"quotes.txt";
+
+            if (!File.Exists(quotesFile))
             {
-                using (StreamWriter streamWriter = File.CreateText(ordersFile))
+                using (StreamWriter streamWriter = File.CreateText(quotesFile))
                 {
                     streamWriter.WriteLine(
                         $"{deskQuote.QuoteDate}," +
@@ -130,7 +134,7 @@ namespace MegaDesk
             }
             else
             {
-                using (StreamWriter streamWriter = File.AppendText(ordersFile))
+                using (StreamWriter streamWriter = File.AppendText(quotesFile))
                 {
                     streamWriter.WriteLine(
                         $"{deskQuote.QuoteDate}," +

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.QuoteDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +106,9 @@
             // 
             // QuoteAmount
             // 
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.QuoteAmount.DefaultCellStyle = dataGridViewCellStyle1;
             this.QuoteAmount.HeaderText = "Quote Amount";
             this.QuoteAmount.Name = "QuoteAmount";
             this.QuoteAmount.ReadOnly = true;
