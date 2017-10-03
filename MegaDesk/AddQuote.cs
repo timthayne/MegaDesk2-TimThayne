@@ -123,7 +123,6 @@ namespace MegaDesk
                         $"{deskQuote.Desk.Width}," +
                         $"{deskQuote.Desk.NumberOfDrawers}," +
                         $"{deskQuote.Desk.SurfaceMaterial}," +
-                        $"{deskQuote.QuoteAmount}," +
                         $"{deskQuote.DeliveryType}," +
                         $"{deskQuote.QuoteAmount}");
                 }
@@ -140,7 +139,6 @@ namespace MegaDesk
                         $"{deskQuote.Desk.Width}," +
                         $"{deskQuote.Desk.NumberOfDrawers}," +
                         $"{deskQuote.Desk.SurfaceMaterial}," +
-                        $"{deskQuote.QuoteAmount}," +
                         $"{deskQuote.DeliveryType}," +
                         $"{deskQuote.QuoteAmount}");
                 }

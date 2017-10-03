@@ -41,15 +41,12 @@
             this.comSurfaceMaterial = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comDelivery = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPriceQuote = new System.Windows.Forms.TextBox();
             this.btnGetQuote = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numDeskWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDeskDepth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNumberOfDrawers)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -224,25 +221,6 @@
             this.comDelivery.Size = new System.Drawing.Size(163, 28);
             this.comDelivery.TabIndex = 7;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtPriceQuote);
-            this.groupBox1.Location = new System.Drawing.Point(100, 319);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(427, 99);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Price Quote:";
-            // 
-            // txtPriceQuote
-            // 
-            this.txtPriceQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceQuote.Location = new System.Drawing.Point(113, 36);
-            this.txtPriceQuote.Name = "txtPriceQuote";
-            this.txtPriceQuote.ReadOnly = true;
-            this.txtPriceQuote.Size = new System.Drawing.Size(200, 26);
-            this.txtPriceQuote.TabIndex = 11;
-            // 
             // btnGetQuote
             // 
             this.btnGetQuote.Location = new System.Drawing.Point(158, 261);
@@ -284,7 +262,6 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnGetQuote);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comDelivery);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comSurfaceMaterial);
@@ -301,8 +278,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numDeskWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDeskDepth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNumberOfDrawers)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -325,8 +300,6 @@
         private System.Windows.Forms.ComboBox comSurfaceMaterial;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comDelivery;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtPriceQuote;
         private System.Windows.Forms.Button btnGetQuote;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnCancel;
