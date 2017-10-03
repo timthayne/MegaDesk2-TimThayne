@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MegaDesk
 {
-    class DeskQuote
+    public class DeskQuote
     {
         // constants
         const decimal BASE_DESK_PRICE = 200.00M;

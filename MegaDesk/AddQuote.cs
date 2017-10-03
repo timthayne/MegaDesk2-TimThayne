@@ -86,12 +86,16 @@ namespace MegaDesk
             {
                 var quote = deskQuote.GetQuote();
 
-                //TODO: ensure valid quote amount
+                // get quote amount
                 deskQuote.QuoteAmount = quote;
 
+                // add quote to file
                 AddQuoteToFile(deskQuote);
 
-                //TODO: show quote in DisplayQuote (via construtor)
+                // show 'DisplayQuote' form
+                DisplayQuote frmDisplayQuote = new DisplayQuote(deskQuote);
+                frmDisplayQuote.Show();
+                Hide();
 
             }
             catch (Exception err)
@@ -110,7 +114,7 @@ namespace MegaDesk
             string ordersFile = @"quotes.txt";
             if (!File.Exists(ordersFile))
             {
-                using (StreamWriter streamWriter = File.CreateText("quotes.txt"))
+                using (StreamWriter streamWriter = File.CreateText(ordersFile))
                 {
                     streamWriter.WriteLine(
                         $"{deskQuote.QuoteDate}," +
@@ -120,23 +124,26 @@ namespace MegaDesk
                         $"{deskQuote.Desk.NumberOfDrawers}," +
                         $"{deskQuote.Desk.SurfaceMaterial}," +
                         $"{deskQuote.QuoteAmount}," +
-                        $"{deskQuote.DeliveryType}, " +
+                        $"{deskQuote.DeliveryType}," +
                         $"{deskQuote.QuoteAmount}");
                 }
 
             }
-            using (StreamWriter streamWriter = File.AppendText(@"quotes.txt"))
+            else
             {
-                streamWriter.WriteLine(
-                    $"{deskQuote.QuoteDate}," +
-                    $"{deskQuote.CustomerName}," +
-                    $"{deskQuote.Desk.Depth}," +
-                    $"{deskQuote.Desk.Width}," +
-                    $"{deskQuote.Desk.NumberOfDrawers}," +
-                    $"{deskQuote.Desk.SurfaceMaterial}," +
-                    $"{deskQuote.QuoteAmount}," +
-                    $"{deskQuote.DeliveryType}, " +
-                    $"{deskQuote.QuoteAmount}");
+                using (StreamWriter streamWriter = File.AppendText(ordersFile))
+                {
+                    streamWriter.WriteLine(
+                        $"{deskQuote.QuoteDate}," +
+                        $"{deskQuote.CustomerName}," +
+                        $"{deskQuote.Desk.Depth}," +
+                        $"{deskQuote.Desk.Width}," +
+                        $"{deskQuote.Desk.NumberOfDrawers}," +
+                        $"{deskQuote.Desk.SurfaceMaterial}," +
+                        $"{deskQuote.QuoteAmount}," +
+                        $"{deskQuote.DeliveryType}," +
+                        $"{deskQuote.QuoteAmount}");
+                }
             }
         }
     }
