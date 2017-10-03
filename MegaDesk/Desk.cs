@@ -19,15 +19,12 @@ namespace MegaDesk
         }
 
         // properties
-        public int Width { get; set; }
+        public decimal Width { get; set; }
 
-        public int Depth { get; set; }
+        public decimal Depth { get; set; }
 
         public int NumberOfDrawers { get; set; }
 
         public Surface SurfaceMaterial { get; set; }
-
-        // methods
-        //TODO:s
     }
 }
