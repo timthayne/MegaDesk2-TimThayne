@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,12 +31,33 @@ namespace MegaDesk
 
         private void loadGrid()
         {
-            string[] deskQuotes = File.ReadAllLines(@"quotes.txt");
+            var quotesFile = @"quotes.json";
 
-            foreach (string deskQuote in deskQuotes)
+            using (StreamReader reader = new StreamReader(quotesFile))
             {
-                string[] arrRow = deskQuote.Split(new char[] { ',' });
-                dataGridView1.Rows.Add(arrRow);
+                // load existing quotes
+                string quotes = reader.ReadToEnd();
+                List<DeskQuote> deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                dataGridView1.DataSource = deskQuotes.Select(d => new
+                {
+                    Date = d.QuoteDate,
+                    Customer = d.CustomerName,
+                    Depth = d.Desk.Depth,
+                    Width = d.Desk.Width,
+                    Drawers = d.Desk.NumberOfDrawers,
+                    SurfaceMaterial = d.Desk.Material,
+                    DeliveryType = d.DeliveryType,
+                    QuoteAmount = d.QuoteAmount
+                }).ToList();
+
+                //string deskQuotes = File.ReadAllLines(@"quotes.json");
+
+                //foreach (string deskQuote in deskQuotes)
+                //{
+                //    string[] arrRow = deskQuote.Split(new char[] { ',' });
+                //    dataGridView1.Rows.Add(arrRow);
+                //}
             }
         }
     }

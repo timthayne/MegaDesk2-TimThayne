@@ -17,15 +17,15 @@ namespace MegaDesk
         const decimal PINE_COST = 50.00M;
         const decimal ROSEWOOD_COST = 300.00M;
         const decimal VENEER_COST = 125.00M;
-        const decimal RUSH_3DAY_LESS_THAN_1000 = 60.00M;
-        const decimal RUSH_3DAY_1000_TO_2000 = 70.00M;
-        const decimal RUSH_3DAY_GREATER_THAN_2000 = 80.00M;
-        const decimal RUSH_5DAY_LESS_THAN_1000 = 40.00M;
-        const decimal RUSH_5DAY_1000_TO_2000 = 50.00M;
-        const decimal RUSH_5DAY_GREATER_THAN_2000 = 60.00M;
-        const decimal RUSH_7DAY_LESS_THAN_1000 = 30.00M;
-        const decimal RUSH_7DAY_1000_TO_2000 = 35.00M;
-        const decimal RUSH_7DAY_GREATER_THAN_2000 = 40.00M;
+        //const decimal RUSH_3DAY_LESS_THAN_1000 = 60.00M;
+        //const decimal RUSH_3DAY_1000_TO_2000 = 70.00M;
+        //const decimal RUSH_3DAY_GREATER_THAN_2000 = 80.00M;
+        //const decimal RUSH_5DAY_LESS_THAN_1000 = 40.00M;
+        //const decimal RUSH_5DAY_1000_TO_2000 = 50.00M;
+        //const decimal RUSH_5DAY_GREATER_THAN_2000 = 60.00M;
+        //const decimal RUSH_7DAY_LESS_THAN_1000 = 30.00M;
+        //const decimal RUSH_7DAY_1000_TO_2000 = 35.00M;
+        //const decimal RUSH_7DAY_GREATER_THAN_2000 = 40.00M;
 
         //enums
         public enum Delivery
@@ -52,6 +52,12 @@ namespace MegaDesk
         {
             //TODO:
             return 100.00M;
+        }
+
+        public void GetRushOrder()
+        {
+            //TODO:
+
         }
     }
 }

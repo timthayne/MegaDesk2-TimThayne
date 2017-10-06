@@ -25,25 +25,25 @@ namespace MegaDesk
             numDeskDepth.Value = _deskQuote.Desk.Depth;
             numNumberOfDrawers.Value = _deskQuote.Desk.NumberOfDrawers;
 
-            switch (_deskQuote.Desk.SurfaceMaterial)
+            switch (_deskQuote.Desk.Material)
             {
-                case Desk.Surface.Laminate:
+                case Desk.DesktopMaterial.Laminate:
                     comSurfaceMaterial.SelectedIndex = 0;
                     break;
 
-                case Desk.Surface.Oak:
+                case Desk.DesktopMaterial.Oak:
                     comSurfaceMaterial.SelectedIndex = 1;
                     break;
 
-                case Desk.Surface.Pine:
+                case Desk.DesktopMaterial.Pine:
                     comSurfaceMaterial.SelectedIndex = 2;
                     break;
 
-                case Desk.Surface.Rosewood:
+                case Desk.DesktopMaterial.Rosewood:
                     comSurfaceMaterial.SelectedIndex = 3;
                     break;
 
-                case Desk.Surface.Veneer:
+                case Desk.DesktopMaterial.Veneer:
                     comSurfaceMaterial.SelectedIndex = 4;
                     break;
             }

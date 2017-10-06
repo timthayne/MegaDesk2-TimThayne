@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MegaDesk
 {
-    public class Desk
+    public struct Desk
     {
         // enums
-        public enum Surface
+        public enum DesktopMaterial
         {
             Laminate,
             Oak,
@@ -25,6 +25,6 @@ namespace MegaDesk
 
         public int NumberOfDrawers { get; set; }
 
-        public Surface SurfaceMaterial { get; set; }
+        public DesktopMaterial Material { get; set; }
     }
 }

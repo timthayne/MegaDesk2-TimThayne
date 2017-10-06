@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
@@ -44,10 +45,12 @@
             this.btnGetQuote = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.surfaceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numDeskWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDeskDepth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNumberOfDrawers)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.surfaceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -186,12 +189,6 @@
             // 
             this.comSurfaceMaterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comSurfaceMaterial.FormattingEnabled = true;
-            this.comSurfaceMaterial.Items.AddRange(new object[] {
-            "Laminate",
-            "Oak",
-            "Pine",
-            "Rosewood",
-            "Veneer"});
             this.comSurfaceMaterial.Location = new System.Drawing.Point(493, 163);
             this.comSurfaceMaterial.Name = "comSurfaceMaterial";
             this.comSurfaceMaterial.Size = new System.Drawing.Size(162, 28);
@@ -211,11 +208,6 @@
             // 
             this.comDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comDelivery.FormattingEnabled = true;
-            this.comDelivery.Items.AddRange(new object[] {
-            "Rush - 3 Days",
-            "Rush - 5 Days",
-            "Rush - 7 Days",
-            "Normal - 14 Days"});
             this.comDelivery.Location = new System.Drawing.Point(492, 199);
             this.comDelivery.Name = "comDelivery";
             this.comDelivery.Size = new System.Drawing.Size(163, 28);
@@ -227,9 +219,9 @@
             this.btnGetQuote.Name = "btnGetQuote";
             this.btnGetQuote.Size = new System.Drawing.Size(152, 37);
             this.btnGetQuote.TabIndex = 8;
-            this.btnGetQuote.Text = "Get Quote";
+            this.btnGetQuote.Text = "Save Quote";
             this.btnGetQuote.UseVisualStyleBackColor = true;
-            this.btnGetQuote.Click += new System.EventHandler(this.btnGetQuote_Click);
+            this.btnGetQuote.Click += new System.EventHandler(this.btnSaveQuote_Click);
             // 
             // groupBox2
             // 
@@ -253,6 +245,10 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // surfaceBindingSource
+            // 
+            this.surfaceBindingSource.DataSource = typeof(MegaDesk.Desk.DesktopMaterial);
             // 
             // AddQuote
             // 
@@ -280,6 +276,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNumberOfDrawers)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.surfaceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +300,6 @@
         private System.Windows.Forms.Button btnGetQuote;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.BindingSource surfaceBindingSource;
     }
 }
