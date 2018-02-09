@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,8 +22,21 @@ namespace MegaDesk
             // assign private variables
             _mainMenu = mainMenu;
 
-            // set default state
-            comboSurfaceMaterial.SelectedIndex = 0;
+            /* set default state */
+
+            // populate materials combobox
+            var materials = new List<Desk.DesktopMaterial>();
+
+            materials = Enum.GetValues(typeof(Desk.DesktopMaterial))
+                             .Cast<Desk.DesktopMaterial>()
+                             .ToList();
+
+            comSurfaceMaterial.DataSource = materials;
+
+            // set default to empty
+            comSurfaceMaterial.SelectedIndex = -1;
+
+            // populate grid
             loadGrid();
         }
 
@@ -31,11 +45,11 @@ namespace MegaDesk
             _mainMenu.Show();
         }
 
-        private void comboSurfaceMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        private void comSurfaceMaterial_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox combo = (ComboBox)sender;
 
-            if (combo.SelectedIndex == 0)
+            if (combo.SelectedIndex < 0)
             {
                 // reset grid
                 loadGrid();
@@ -43,36 +57,57 @@ namespace MegaDesk
             else
             {
                 // search grid
-                loadGrid(combo.SelectedItem.ToString());
+                loadGrid((Desk.DesktopMaterial)combo.SelectedValue);
             }
         }
 
         private void loadGrid()
         {
-            dataGridView1.Rows.Clear();
+            var quotesFile = @"quotes.json";
 
-            string[] deskQuotes = File.ReadAllLines(@"quotes.txt");
-
-            foreach (string deskQuote in deskQuotes)
+            using (StreamReader reader = new StreamReader(quotesFile))
             {
-                string[] arrRow = deskQuote.Split(new char[] { ',' });
-                dataGridView1.Rows.Add(arrRow);
+                // load existing quotes
+                string quotes = reader.ReadToEnd();
+                List<DeskQuote> deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                dataGridView1.DataSource = deskQuotes.Select(d => new
+                {
+                    Date = d.QuoteDate,
+                    Customer = d.CustomerName,
+                    Depth = d.Desk.Depth,
+                    Width = d.Desk.Width,
+                    Drawers = d.Desk.NumberOfDrawers,
+                    SurfaceMaterial = d.Desk.Material,
+                    DeliveryType = d.DeliveryType,
+                    QuoteAmount = d.QuotePrice
+                }).ToList();
             }
         }
 
-        private void loadGrid(string searchTerm)
+        private void loadGrid(Desk.DesktopMaterial desktopMaterial)
         {
-            dataGridView1.Rows.Clear();
+            var quotesFile = @"quotes.json";
 
-            string[] deskQuotes = File.ReadAllLines(@"quotes.txt");
-
-            foreach (string deskQuote in deskQuotes)
+            using (StreamReader reader = new StreamReader(quotesFile))
             {
-                if (deskQuote.Contains(searchTerm))
+                // load existing quotes
+                string quotes = reader.ReadToEnd();
+                List<DeskQuote> deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                dataGridView1.DataSource = deskQuotes.Select(d => new
                 {
-                    string[] arrRow = deskQuote.Split(new char[] { ',' });
-                    dataGridView1.Rows.Add(arrRow);
-                }
+                    Date = d.QuoteDate,
+                    Customer = d.CustomerName,
+                    Depth = d.Desk.Depth,
+                    Width = d.Desk.Width,
+                    Drawers = d.Desk.NumberOfDrawers,
+                    SurfaceMaterial = d.Desk.Material,
+                    DeliveryType = d.DeliveryType,
+                    QuoteAmount = d.QuotePrice
+                })
+                .Where(q => q.SurfaceMaterial == desktopMaterial)
+                .ToList();
             }
         }
     }

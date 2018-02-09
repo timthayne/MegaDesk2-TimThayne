@@ -12,20 +12,24 @@ namespace MegaDesk
 {
     public partial class DisplayQuote : Form
     {
-        private DeskQuote _deskQuote;
-
-        public DisplayQuote(DeskQuote deskQuote)
+        private Form _mainMenu;
+        //private DeskQuote _deskQuote;
+        
+        public DisplayQuote(Form mainMenu, DeskQuote deskQuote)
         {
             InitializeComponent();
-            _deskQuote = deskQuote;
+            _mainMenu = mainMenu;
+            //_deskQuote = deskQuote;
 
             // set form properties
-            txtCustomerName.Text = _deskQuote.CustomerName;
-            numDeskWidth.Value = _deskQuote.Desk.Width;
-            numDeskDepth.Value = _deskQuote.Desk.Depth;
-            numNumberOfDrawers.Value = _deskQuote.Desk.NumberOfDrawers;
-
-            switch (_deskQuote.Desk.Material)
+            txtCustomerName.Text = deskQuote.CustomerName;
+            numDeskWidth.Value = deskQuote.Desk.Width;
+            numDeskDepth.Value = deskQuote.Desk.Depth;
+            numNumberOfDrawers.Value = deskQuote.Desk.NumberOfDrawers;
+            comSurfaceMaterial.SelectedValue = deskQuote.Desk.Material;
+            comDelivery.SelectedValue = deskQuote.DeliveryType;
+            /*
+            switch (deskQuote.Desk.Material)
             {
                 case Desk.DesktopMaterial.Laminate:
                     comSurfaceMaterial.SelectedIndex = 0;
@@ -47,8 +51,9 @@ namespace MegaDesk
                     comSurfaceMaterial.SelectedIndex = 4;
                     break;
             }
-
-            switch (_deskQuote.DeliveryType)
+            */
+            /*
+            switch (deskQuote.DeliveryType)
             {
                 case DeskQuote.Delivery.Rush3Days:
                     comDelivery.SelectedIndex = 0;
@@ -66,15 +71,19 @@ namespace MegaDesk
                     comDelivery.SelectedIndex = 3;
                     break;
             }
+            */
 
-            txtPriceQuote.Text = _deskQuote.QuoteAmount.ToString("C");
+            txtPriceQuote.Text = deskQuote.QuotePrice.ToString("C");
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            var frmMainMenu = new MainMenu();
-            frmMainMenu.Show();
             Close();
+        }
+
+        private void DisplayQuote_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _mainMenu.Show();
         }
     }
 }

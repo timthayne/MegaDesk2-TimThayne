@@ -48,7 +48,7 @@ namespace MegaDesk
                     Drawers = d.Desk.NumberOfDrawers,
                     SurfaceMaterial = d.Desk.Material,
                     DeliveryType = d.DeliveryType,
-                    QuoteAmount = d.QuoteAmount
+                    QuoteAmount = d.QuotePrice
                 }).ToList();
 
                 //string deskQuotes = File.ReadAllLines(@"quotes.json");

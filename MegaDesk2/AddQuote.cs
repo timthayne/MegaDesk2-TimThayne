@@ -78,16 +78,16 @@ namespace MegaDesk
             try
             {
                 // get quote amount
-                var quote = deskQuote.GetQuote();
+                var price = deskQuote.GetQuotePrice();
 
                 // add amount to quote
-                deskQuote.QuoteAmount = quote;
+                deskQuote.QuotePrice = price;
 
                 // add quote to file
                 AddQuoteToFile(deskQuote);
 
                 // show 'DisplayQuote' form
-                DisplayQuote frmDisplayQuote = new DisplayQuote(deskQuote);
+                DisplayQuote frmDisplayQuote = new DisplayQuote(_mainMenu, deskQuote);
                 frmDisplayQuote.Show();
                 Hide();
             }
@@ -105,7 +105,7 @@ namespace MegaDesk
         private void AddQuoteToFile(DeskQuote deskQuote)
         {
             var quotesFile = @"quotes.json";
-            List<DeskQuote> deskQuotes = null;
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
 
             // read existing quotes
             if (File.Exists(quotesFile))
@@ -115,8 +115,11 @@ namespace MegaDesk
                     // load existing quotes
                     string quotes = reader.ReadToEnd();
 
-                    // deserialize quotes
-                    deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                    if (quotes.Length > 0)
+                    {
+                        // deserialize quotes
+                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                    }
 
                     // add a new quote
                     deskQuotes.Add(deskQuote);

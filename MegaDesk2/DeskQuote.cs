@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,10 +46,10 @@ namespace MegaDesk
 
         public Delivery DeliveryType { get; set; }
 
-        public decimal QuoteAmount { get; set; }
+        public decimal QuotePrice { get; set; }
 
         // methods
-        public decimal GetQuote()
+        public decimal GetQuotePrice()
         {
             //TODO:
             return 100.00M;
