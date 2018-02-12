@@ -50,14 +50,6 @@ namespace MegaDesk
                     DeliveryType = d.DeliveryType,
                     QuoteAmount = d.QuotePrice
                 }).ToList();
-
-                //string deskQuotes = File.ReadAllLines(@"quotes.json");
-
-                //foreach (string deskQuote in deskQuotes)
-                //{
-                //    string[] arrRow = deskQuote.Split(new char[] { ',' });
-                //    dataGridView1.Rows.Add(arrRow);
-                //}
             }
         }
     }
