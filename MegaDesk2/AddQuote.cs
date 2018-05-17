@@ -60,7 +60,7 @@ namespace MegaDesk
         private void btnSaveQuote_Click(object sender, EventArgs e)
         {
             var desk = new Desk
-            {
+            {  
                 Depth = numDeskDepth.Value,
                 Width = numDeskWidth.Value,
                 NumberOfDrawers = (int)numNumberOfDrawers.Value,
